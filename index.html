@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vince Andrew L. Sorno | Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #38bdf8;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero h2 {
+      color: #cbd5e1;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #94a3b8;
+      margin-bottom: 28px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #020617;
+    }
+
+    .btn-primary:hover {
+      background: #0ea5e9;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+    }
+
+    .btn-outline:hover {
+      background: #38bdf8;
+      color: #020617;
+      transform: translateY(-3px);
+    }
+
+    .profile-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .profile-placeholder {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #38bdf8, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .profile-card h3 {
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .profile-card p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #94a3b8;
+    }
+
+    .about-box {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 30px;
+      color: #cbd5e1;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card,
+    .project-card,
+    .certificate-card,
+    .contact-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 25px;
+      transition: 0.3s;
+    }
+
+    .skill-card:hover,
+    .project-card:hover,
+    .certificate-card:hover,
+    .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: #38bdf8;
+    }
+
+    .skill-card h3,
+    .project-card h3,
+    .certificate-card h3,
+    .contact-card h3 {
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+
+    .skill-card ul,
+    .certificate-card ul {
+      list-style: none;
+    }
+
+    .skill-card li,
+    .certificate-card li {
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .project-tags span {
+      background: #0f172a;
+      color: #38bdf8;
+      border: 1px solid #334155;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .project-card p {
+      color: #cbd5e1;
+      margin-bottom: 18px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .small-btn {
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      transition: 0.3s;
+    }
+
+    .small-btn:hover {
+      background: #38bdf8;
+      color: #020617;
+    }
+
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .resume-box {
+      text-align: center;
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 35px;
+      border-radius: 16px;
+    }
+
+    .resume-box p {
+      color: #cbd5e1;
+      margin-bottom: 22px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .contact-card p {
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 0;
+      border-top: 1px solid #1e293b;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 850px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        background: #0f172a;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        display: none;
+        border-bottom: 1px solid #1e293b;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hero-content,
+      .projects-grid,
+      .certificates-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .profile-card {
+        max-width: 350px;
+        margin: auto;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 550px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <a href="#home" class="logo">Vince Sorno</a>
+
+      <div class="menu-btn" id="menuBtn">☰</div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div>
+          <h1>Hi, I’m <span>Vince Andrew L. Sorno</span></h1>
+          <h2>Computer Engineering Student | Aspiring Web & Software Developer</h2>
+          <p>
+            I build student projects using Java, Python, HTML, CSS, JavaScript, PHP, and MySQL.
+            I am currently preparing for my On-the-Job Training where I can apply my skills,
+            learn from professionals, and contribute to real-world projects.
+          </p>
+
+          <div class="btn-group">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="assets/resume.pdf" class="btn btn-outline" download>Download Resume</a>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-placeholder">VS</div>
+          <h3>OJT Applicant</h3>
+          <p>Web · Software · Database · IT Support</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me</h2>
+          <p>A short introduction about my background and career goal.</p>
+        </div>
+
+        <div class="about-box">
+          <p>
+            I am a third-year Bachelor of Science in Computer Engineering student at Southern Luzon
+            State University – Main Campus. I am passionate about building useful software applications,
+            learning web technologies, and improving my skills in programming, database management,
+            and troubleshooting.
+          </p>
+          <br />
+          <p>
+            As an OJT applicant, I am looking for an opportunity where I can gain hands-on experience,
+            work with professionals, and apply what I have learned from academic projects and personal practice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <h2>Skills</h2>
+          <p>Technologies, tools, and concepts I have used in my academic and project work.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Programming</h3>
+            <ul>
+              <li>Java</li>
+              <li>Python</li>
+              <li>C++</li>
+              <li>JavaScript</li>
+              <li>PHP</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h3>Web Development</h3>
+            <ul>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>PHP</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h3>Database</h3>
+            <ul>
+              <li>MySQL</li>
+              <li>Database Design</li>
+              <li>Database Management</li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h3>Tools</h3>
+            <ul>
+              <li>VS Code</li>
+              <li>Eclipse</li>
+              <li>XAMPP</li>
+              <li>Git</li>
+              <li>GitHub</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>Projects</h2>
+          <p>Selected academic and personal projects that show my skills and learning progress.</p>
+        </div>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Geospatial Analysis and ML-Based Rainfall Intensity Mapping</h3>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Scikit-learn</span>
+              <span>GIS</span>
+              <span>QGIS</span>
+            </div>
+            <p>
+              A data analysis project that maps and analyzes rainfall intensity patterns across Quezon Province
+              using machine learning and GIS-based visualization.
+            </p>
+            <div class="project-links">
+              <a href="#" class="small-btn">View Details</a>
+              <a href="#" class="small-btn">GitHub Soon</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>Artivista – Digital Art Learning Platform</h3>
+            <div class="project-tags">
+              <span>Java</span>
+              <span>Java Swing</span>
+              <span>OOP</span>
+            </div>
+            <p>
+              A Java-based learning platform with structured art lessons, student progress tracking,
+              a digital workspace, and portfolio management features.
+            </p>
+            <div class="project-links">
+              <a href="#" class="small-btn">View Details</a>
+              <a href="#" class="small-btn">GitHub Soon</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>Farm Management System</h3>
+            <div class="project-tags">
+              <span>Java</span>
+              <span>OOP</span>
+              <span>Desktop App</span>
+            </div>
+            <p>
+              A farm management application designed to organize crop management, irrigation tracking,
+              expense monitoring, task planning, and reports.
+            </p>
+            <div class="project-links">
+              <a href="#" class="small-btn">View Details</a>
+              <a href="#" class="small-btn">GitHub Soon</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>Task Management System</h3>
+            <div class="project-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>PHP</span>
+              <span>MySQL</span>
+            </div>
+            <p>
+              A web-based productivity system for creating, organizing, tracking, and managing user tasks
+              through a clean and responsive interface.
+            </p>
+            <div class="project-links">
+              <a href="#" class="small-btn">View Details</a>
+              <a href="#" class="small-btn">GitHub Soon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <div class="container">
+        <div class="section-title">
+          <h2>Certificates & Affiliations</h2>
+          <p>Certifications, events, and organizations related to my academic and professional growth.</p>
+        </div>
+
+        <div class="certificates-grid">
+          <div class="certificate-card">
+            <h3>Certificates</h3>
+            <ul>
+              <li>Safety Officer 2 (SO2) – DOLE / OSH</li>
+              <li>ICpEP.se Regional Convention 2024</li>
+              <li>ICpEP.se Regional Convention 2025</li>
+            </ul>
+          </div>
+
+          <div class="certificate-card">
+            <h3>Affiliations</h3>
+            <ul>
+              <li>Future Engineers League (FUELs) Member</li>
+              <li>Society of Computer Engineering Students (SCopES) Member</li>
+              <li>Institute of Computer Engineers of the Philippines (ICpEP) Member</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="container">
+        <div class="section-title">
+          <h2>Resume</h2>
+          <p>Download my resume for more details about my education, skills, and projects.</p>
+        </div>
+
+        <div class="resume-box">
+          <p>
+            You can view or download my resume to learn more about my background, academic projects,
+            certifications, and technical skills.
+          </p>
+          <a href="assets/resume.pdf" class="btn btn-primary" download>Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact Me</h2>
+          <p>Feel free to contact me for internship opportunities or professional inquiries.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Contact Information</h3>
+            <p><strong>Email:</strong> vincesorno@slsu.edu.ph</p>
+            <p><strong>Phone:</strong> 09616685336</p>
+            <p><strong>Location:</strong> Atimonan, Quezon Province</p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Online Profiles</h3>
+            <p>
+              <strong>GitHub:</strong>
+              <a href="https://github.com/vincesorno" target="_blank" rel="noopener noreferrer">
+                github.com/vincesorno
+              </a>
+            </p>
+
+            <p>
+              <strong>LinkedIn:</strong>
+              <a href="https://www.linkedin.com/in/vince-sorno-103253407/" target="_blank" rel="noopener noreferrer">
+                linkedin.com/in/vince-sorno-103253407
+              </a>
+            </p>
+            <p><strong>Status:</strong> Open for OJT / Internship opportunities</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Vince Andrew L. Sorno. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
